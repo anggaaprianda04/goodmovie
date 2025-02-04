@@ -1,7 +1,9 @@
 <template>
-  <div class="w-28 h-14 bg-primary rounded-md flex font-poppins items-end">
+  <div class="flex items-end rounded-md w-28 h-14 bg-primary font-poppins">
     <div class="w-full">
-      <p class="text-whiteColor text-end font-medium mr-2 mb-2">Action</p>
+      <p class="mb-2 mr-2 font-medium text-whiteColor text-end">
+        {{ categoryName }}
+      </p>
     </div>
   </div>
 </template>
@@ -9,5 +11,11 @@
 <script>
 export default {
   name: "CardCategory",
+  props: {
+    categoryName: {
+      type: String,
+      required: true,
+    },
+  },
 };
 </script>
