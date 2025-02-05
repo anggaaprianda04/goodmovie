@@ -190,7 +190,7 @@ export default {
   width: 100%;
   height: 140px;
   position: relative;
-  padding-bottom: 220px;
+  padding-bottom: 235px;
   overflow: visible;
 }
 
