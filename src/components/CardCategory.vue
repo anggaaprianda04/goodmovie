@@ -1,7 +1,7 @@
 <template>
-  <div class="flex items-end rounded-md w-28 h-14 bg-primary font-poppins">
-    <div class="w-full">
-      <p class="mb-2 mr-2 font-medium text-whiteColor text-end">
+  <div class="flex items-end w-auto rounded-md h-14 bg-primary font-poppins">
+    <div class="w-auto text-end">
+      <p class="mb-2 mr-2 font-medium ml-9 text-whiteColor">
         {{ categoryName }}
       </p>
     </div>

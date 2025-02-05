@@ -2,11 +2,17 @@
   <Layout>
     <div class="flex flex-row gap-4 mt-6 overflow-auto">
       <div v-for="(val, index) in listCategory" :key="index">
-        <CardCategory :category-name="val.name" :key="val.id" />
+        <RouterLink
+          :to="`/category/${val.id}`"
+          :key="val.id"
+          @click="storeCategory(val.id, val.name)">
+          <CardCategory :category-name="val.name" />
+        </RouterLink>
       </div>
     </div>
     <ListCard title-header="Popular" :list-movie="listPopularMovie" />
     <ListCard title-header="Top Movie" :list-movie="listTopMovie" />
+    <div class="mt-8"></div>
   </Layout>
 </template>
 
@@ -17,14 +23,23 @@ import ListCard from "../components/ListCard.vue";
 import { ref, onMounted } from "vue";
 
 import imdbService from "../services/imdbService";
+import { RouterLink } from "vue-router";
+import { useCategoryStore } from "../stores/categoryStore";
 
 export default {
   components: {
     Layout,
     CardCategory,
     ListCard,
+    RouterLink,
   },
   setup() {
+    const categoryStore = useCategoryStore();
+
+    const storeCategory = (id, name) => {
+      categoryStore.setCategory(id, name);
+    };
+
     let listCategory = ref([]);
     let listPopularMovie = ref([]);
     let listTopMovie = ref([]);
@@ -61,6 +76,7 @@ export default {
       listCategory,
       listPopularMovie,
       listTopMovie,
+      storeCategory,
     };
   },
 };

@@ -3,7 +3,9 @@
     <div class="relative">
       <img class="object-cover h-56" :src="fullImgUrl" alt="img" />
       <div class="absolute bottom-0 right-0 w-8 bg-black bg-opacity-50 h-7">
-        <p class="mt-1 text-sm text-center text-whiteColor">{{ rating }}</p>
+        <p class="mt-1 text-sm text-center text-whiteColor">
+          {{ parseFloat(rating.toFixed(1)) }}
+        </p>
       </div>
     </div>
     <p class="mt-1 text-sm text-whiteColor line-clamp-1">
