@@ -1,7 +1,10 @@
 <template>
   <Layout>
-    <div class="flex justify-end mt-6">
-      <div class="flex flex-col items-end">
+    <div class="flex justify-between mt-6">
+      <button @click="console.log('masuk')">
+        <img class="w-6 h-6" src="/image/icon_back.png" alt="icon" />
+      </button>
+      <div class="flex flex-col">
         <hr class="border-2 w-11 border-secondary" />
         <h1 class="text-2xl font-semibold text-whiteColor">
           {{ categoryName }}

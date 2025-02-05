@@ -1,6 +1,17 @@
 <template>
   <Layout>
-    <div class="flex flex-row gap-4 mt-6 overflow-auto">
+    <Swiper
+      :modules="modules"
+      :slides-per-view="3"
+      :space-between="20"
+      :pagination="{ clickable: true }"
+      style="">
+      <SwiperSlide v-for="n in 5" :key="n">
+        <div class="p-6 bg-white rounded-xl h-44">Slide {{ n }}</div>
+      </SwiperSlide>
+    </Swiper>
+
+    <div class="relative flex flex-row gap-4 mt-4 overflow-auto">
       <div v-for="(val, index) in listCategory" :key="index">
         <RouterLink
           :to="`/category/${val.id}`"
@@ -26,12 +37,23 @@ import imdbService from "../services/imdbService";
 import { RouterLink } from "vue-router";
 import { useCategoryStore } from "../stores/categoryStore";
 
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+
+import { Swiper, SwiperSlide } from "swiper/vue";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+
 export default {
   components: {
     Layout,
     CardCategory,
     ListCard,
     RouterLink,
+    Swiper,
+    SwiperSlide,
   },
   setup() {
     const categoryStore = useCategoryStore();
@@ -77,7 +99,34 @@ export default {
       listPopularMovie,
       listTopMovie,
       storeCategory,
+      modules: [Navigation, Pagination, Scrollbar, A11y],
     };
   },
 };
 </script>
+<style>
+.swiper {
+  margin-top: 18px;
+  width: 100%;
+  height: 140px;
+  position: relative;
+  padding-bottom: 220px;
+  overflow: visible;
+}
+
+.swiper-pagination-bullet {
+  background-color: #d9d9d9;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 5px;
+  opacity: 0.7;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #944ffa;
+  width: 22px;
+  border-radius: 4px;
+}
+</style>
