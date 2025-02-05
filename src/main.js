@@ -8,7 +8,7 @@ import Category from './pages/Category.vue';
 
 const routes = [
     { path: '/', component: Home },
-    { path: '/detail', component: Detail },
+    { path: '/detail/:id', component: Detail },
     { path: '/category', component: Category },
 ];
 
