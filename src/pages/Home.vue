@@ -3,11 +3,10 @@
     <div v-if="!isLoading" class="overflow-hidden">
       <Swiper
         :modules="modules"
-        :slides-per-view="3"
         :space-between="20"
         :pagination="{ clickable: true }"
         :breakpoints="{
-          420: { slidesPerView: 1 },
+          640: { slidesPerView: 1 },
           768: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
         }"
@@ -25,13 +24,12 @@
     <div v-else>
       <Swiper
         :modules="modules"
-        :slides-per-view="3"
         :space-between="20"
         :pagination="{ clickable: true }"
         :breakpoints="{
-          420: { slidesPerView: 1 },
-          768: { slidesPerView: 2 },
-          1024: { slidesPerView: 3 },
+          640: { slidesPerView: 1 } /* Mobile */,
+          768: { slidesPerView: 2 } /* Tablet */,
+          1024: { slidesPerView: 3 } /* Desktop */,
         }"
         style="">
         <SwiperSlide v-for="n in 3" :key="n">
