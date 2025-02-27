@@ -1,6 +1,9 @@
 <template>
-  <div class="w-20 font-poppins">
-    <img class="object-cover h-28" :src="fullImgUrl" alt="Cast" />
+  <div class="w-24 font-poppins">
+    <img
+      class="object-fill w-full rounded-lg hover:scale-105 hover:duration-200 h-36"
+      :src="fullImgUrl"
+      alt="Cast" />
     <p class="mt-1 text-xs text-center text-whiteColor">{{ name }}</p>
   </div>
 </template>

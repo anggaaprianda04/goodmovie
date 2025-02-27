@@ -40,7 +40,7 @@
       <hr class="border-2 w-11 border-secondary" />
       <h1 class="mb-2 text-lg font-semibold text-whiteColor">Cast</h1>
     </div>
-    <div v-if="!isLoading" class="flex gap-1 overflow-auto">
+    <div v-if="!isLoading" class="flex gap-3 overflow-auto">
       <div v-for="(val, index) in listCast" :key="index">
         <CardCast
           :name="val.name"
@@ -49,7 +49,7 @@
       </div>
     </div>
     <div v-else class="flex gap-1 overflow-auto">
-      <div v-for="(val, index) in 10" :key="index">
+      <div v-for="(val, index) in 20" :key="index">
         <CardShimmer setWidth="80px" setHeigt="112px" />
       </div>
     </div>

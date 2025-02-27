@@ -4,6 +4,7 @@
       <Swiper
         :modules="modules"
         :space-between="20"
+        :autoplay="{ delay: 2000 }"
         :pagination="{ clickable: true }"
         :breakpoints="{
           640: { slidesPerView: 1 },
@@ -15,7 +16,7 @@
           <div class="bg-white rounded-xl h-44" :key="val.id">
             <img
               class="object-cover w-full rounded-md h-44"
-              :src="fullImgUrl"
+              :src="fullImgUrl(val)"
               alt="img" />
           </div>
         </SwiperSlide>
@@ -38,7 +39,7 @@
       </Swiper>
     </div>
     <div v-if="isLoading" class="flex gap-4 mt-4 overflow-auto">
-      <div v-for="(val, index) in 5" :key="index">
+      <div v-for="(val, index) in 15" :key="index">
         <CardShimmer setWidth="100px" setHeigt="56px" />
       </div>
     </div>
@@ -76,7 +77,13 @@ import imdbService from "../services/imdbService";
 import { RouterLink } from "vue-router";
 import { useCategoryStore } from "../stores/categoryStore";
 
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
 
@@ -162,12 +169,12 @@ export default {
       }
     };
 
-    const fullImgUrl = computed(() => {
+    const fullImgUrl = (val) => {
       const baseUrl = "https://image.tmdb.org/t/p/w400";
-      return listUpcoming.value.poster_path
-        ? `${baseUrl}${dataMovie.value.poster_path}`
-        : "/image/dummy_img.png";
-    });
+      return val.backdrop_path
+        ? `${baseUrl}${val.backdrop_path}`
+        : `${baseUrl}/image/dummy_img.png`;
+    };
 
     return {
       listCategory,
@@ -177,7 +184,7 @@ export default {
       isLoading,
       fullImgUrl,
       storeCategory,
-      modules: [Navigation, Pagination, Scrollbar, A11y],
+      modules: [Navigation, Pagination, Scrollbar, A11y, Autoplay],
     };
   },
 };

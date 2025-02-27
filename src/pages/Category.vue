@@ -12,7 +12,7 @@
       </div>
     </div>
     <div
-      class="grid grid-cols-2 gap-3 mt-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 xl:grid-cols-10">
+      class="grid grid-cols-2 gap-3 mt-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8">
       <div v-for="(val, index) in listMovie" :key="index">
         <RouterLink :to="`/detail/${val.id}`" :key="val.id">
           <CardMovie
@@ -25,9 +25,9 @@
     </div>
     <div
       v-if="isLoading"
-      class="grid grid-cols-2 gap-3 mt-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 xl:grid-cols-10">
-      <div v-for="(val, index) in 5" :key="index">
-        <CardShimmer setWidth="160px" setHeigt="220px" />
+      class="grid grid-cols-2 gap-3 mt-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8">
+      <div v-for="(val, index) in 8" :key="index">
+        <CardShimmer setHeigt="220px" />
       </div>
     </div>
     <div class="flex justify-center mb-4">
@@ -75,7 +75,6 @@ export default {
 
     onMounted(async () => {
       await getMovieByCategory(categoryId, currentPage.value);
-      // console.log(categoryStore.categoryName);
     });
 
     const getMovieByCategory = async (idCategory, page) => {
